@@ -1,10 +1,11 @@
 # todo/todo/urls.py : Main urls.py
-from django.contrib import admin
-from django.urls import path, include
-from perfume_store_api import urls as perfume_store_urls
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')),
-    path('perfume_store/', include(perfume_store_urls)),
+    path('categories', views.CategoryListView.as_view()),
+    path('products', views.ProductListView.as_view()),
+    path('orders', views.OrderListView.as_view()),
+    path('orderItems/<int:order_id>/', views.OrderItemView.as_view())
+    
 ]
